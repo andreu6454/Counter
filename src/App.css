@@ -1,38 +1,90 @@
-.App {
-  text-align: center;
+body{
+  background-color: #3b3939;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.App{
+  margin: auto;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  width: 1000px;
+}
+.Counter{
+  margin: 100px auto 0 auto;
+  width: 250px;
+  max-height: 250px;
+  background-color: darkgray;
+  border-radius: 15px;
+  padding-top: 20px;
+  padding-bottom: 1px;
+}
+.Display{
+  margin: auto;
+  width: 220px;
+  height: 120px;
+  background-color: #3b3939;
+  border-radius: 15px;
+}
+.SettingDisplay{
+  margin: auto;
+  width: 220px;
+  height: 120px;
+  background-color: #3b3939;
+  border-radius: 15px;
+}
+.Display div{
+  padding-top: 25px;
+  text-align: center;
+  font-size: 50px;
+}
+.White{
   color: white;
 }
-
-.App-link {
-  color: #61dafb;
+.Red {
+  color: red;
 }
+.Buttons{
+  display: flex;
+  margin: 15px auto 20px auto;
+  width: 100px;
+  background-color: #3b3939;
+  border-radius: 15px;
+  padding: 10px 20px 10px 10px;
+}
+.ButtonColor {
+  background-color: #3b3939;
+  color: white;
+  margin-left: 10px;
+}
+.ErrorMessage {
+  padding-left: 20px;
+  width: 100px;
+  margin: 10px auto;
+  color: red;
+}
+.Setting{
+  margin: 100px auto 0 auto;
+  width: 250px;
+  max-height: 250px;
+  background-color: darkgray;
+  border-radius: 15px;
+  padding-top: 20px;
+  padding-bottom: 1px;
+}
+.ValueText{
+  padding: 10px 10px 10px 10px;
+  margin-bottom: 10px;
+  color: white;
+  font-size: 20px;
+  display: flex;
+}
+.Value{
+  width: 100px;
+}
+.ValueText input{
+  margin-top: 5px;
+  margin-left: 30px;
+  width: 50px;
+  text-align: center;
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+}
+.SetButton{
+  margin: auto;
 }
