@@ -1,4 +1,4 @@
-import React, {ChangeEvent, Dispatch, SetStateAction, useState} from 'react';
+import React, {ChangeEvent, Dispatch, SetStateAction,useState} from 'react';
 import Button from "./Button";
 
 type SettingPropsType = {
@@ -12,8 +12,8 @@ type SettingPropsType = {
 }
 const Setting = (props: SettingPropsType) => {
 
-    const [minValue, setMinValue] = useState<number>(0)
-    const [maxValue, setMaxValue] = useState<number>(5)
+    const [minValue, setMinValue] = useState<number>(props.minCount)
+    const [maxValue, setMaxValue] = useState<number>(props.maxCount)
     const [isSettingDis, setIsSettingDis] = useState<boolean>(false)
 
     const settingFunction = () => {
@@ -26,8 +26,8 @@ const Setting = (props: SettingPropsType) => {
             props.setErrorMessage("Invalid Value")
             props.setError(true)
             setMaxValue(Number(e.currentTarget.value))
-
             setIsSettingDis(true)
+
         } else {
             setIsSettingDis(false)
             setMaxValue(Number(e.currentTarget.value))
