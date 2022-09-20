@@ -23,11 +23,12 @@ body{
   border-radius: 15px;
 }
 .SettingDisplay{
-  margin: auto;
+  margin: 0 auto 45px auto;
   width: 220px;
   height: 120px;
   background-color: #3b3939;
   border-radius: 15px;
+  box-sizing: border-box;
 }
 .Display div{
   padding-top: 25px;
