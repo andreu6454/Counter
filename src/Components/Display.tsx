@@ -1,8 +1,7 @@
 import React from 'react';
-import { colors } from './Counter';
 
 type DisplayPropsType = {
-    color: colors
+    color: string
     count: number
 }
 const Display = (props: DisplayPropsType) => {
