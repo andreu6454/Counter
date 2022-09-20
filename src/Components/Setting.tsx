@@ -1,69 +1,31 @@
-import React, {ChangeEvent, Dispatch, SetStateAction,useState} from 'react';
+import React from 'react';
 import Button from "./Button";
+import Input from "./Input";
 
-type SettingPropsType = {
-    minCount: number
-    maxCount: number
-    setMinCount: Dispatch<SetStateAction<number>>
-    setMaxCount: Dispatch<SetStateAction<number>>
-    setCount: Dispatch<SetStateAction<number>>
-    setErrorMessage: Dispatch<SetStateAction<string>>
-    setError: Dispatch<SetStateAction<boolean>>
+type SettingsPropsType = {
+    maxCount: number,
+    changeMaxCount: (number: number) => void,
+    minCount: number,
+    changeMinCount: (number: number) => void,
+    changeCount: (number: number) => void
 }
-const Setting = (props: SettingPropsType) => {
+const Setting = (props: SettingsPropsType) => {
 
-    const [minValue, setMinValue] = useState<number>(props.minCount)
-    const [maxValue, setMaxValue] = useState<number>(props.maxCount)
-    const [isSettingDis, setIsSettingDis] = useState<boolean>(false)
-
-    const settingFunction = () => {
-        props.setMaxCount(maxValue);
-        props.setMinCount(minValue);
-        props.setCount(minValue)
-    }
-    const changeMaxValueHandler = (e: ChangeEvent<HTMLInputElement>) => {
-        if (Number(e.currentTarget.value) <= minValue || Number(e.currentTarget.value) < 0) {
-            props.setErrorMessage("Invalid Value")
-            props.setError(true)
-            setMaxValue(Number(e.currentTarget.value))
-            setIsSettingDis(true)
-
-        } else {
-            setIsSettingDis(false)
-            setMaxValue(Number(e.currentTarget.value))
-            props.setErrorMessage("")
-            props.setError(false)
-        }
-    }
-    const changeMinValueHandler = (e: ChangeEvent<HTMLInputElement>) => {
-        if (Number(e.currentTarget.value) < 0 || Number(e.currentTarget.value) >= maxValue) {
-            props.setErrorMessage("Invalid Value")
-            props.setError(true)
-            setIsSettingDis(true)
-            setMinValue(Number(e.currentTarget.value))
-        } else {
-            setMinValue(Number(e.currentTarget.value))
-            props.setErrorMessage("")
-            setIsSettingDis(false)
-            props.setError(false)
-        }
+    const changeHandler = () =>{
+        props.changeMaxCount(props.maxCount)
+        props.changeMinCount(props.minCount)
+        props.changeCount(props.minCount)
     }
 
     return (
         <div className={"Setting"}>
             <div className={"SettingDisplay"}>
-                <div className={"ValueText"}>
-                    <div className={"Value"}>Max value:</div>
-                    <input type={"number"} value={maxValue} onChange={changeMaxValueHandler}></input>
-                </div>
-                <div className={"ValueText"}>
-                    <div className={"Value"}>Min value:</div>
-                    <input type={"number"} value={minValue} onChange={changeMinValueHandler}></input>
-                </div>
+                <Input title={"Max Value:"} value={props.maxCount} onChange={props.changeMaxCount}/>
+                <Input title={"Min Value:"} value={props.minCount} onChange={props.changeMinCount}/>
             </div>
             <div className={"Buttons"}>
                 <div className={"SetButton"}>
-                    <Button name={"Set"} callBack={settingFunction} isDisabled={isSettingDis}/>
+                    <Button name={"Set"} callBack={changeHandler}/>
                 </div>
             </div>
         </div>
