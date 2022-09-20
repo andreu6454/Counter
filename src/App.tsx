@@ -1,29 +1,24 @@
 import React, {useEffect, useState} from 'react';
 import './App.css';
 import Counter from "./Components/Counter";
-import Setting from "./Components/Setting";
+import Settings from "./Components/Setting";
 
 function App() {
-
-    const [minCount, setMinCount] = useState<number>(() => {
-        let MinCount = localStorage.getItem('minCount')
-        if (MinCount) {
-            return JSON.parse(MinCount);
-        }
-        return 0
-    })
-    const [maxCount, setMaxCount] = useState<number>(() => {
+    const [maxCount,setMaxCount] = useState(() => {
         let MaxCount = localStorage.getItem('maxCount')
         if (MaxCount) {
             return JSON.parse(MaxCount);
         }
         return 5
     })
-    const [errorMessage, setErrorMessage] = useState<string>("Max Value")
-
-    const [count, setCount] = useState<number>(minCount)
-    const [error, setError] = useState<boolean>(false)
-
+    const [minCount,setMinCount] = useState(() => {
+        let MinCount = localStorage.getItem('minCount')
+        if (MinCount) {
+            return JSON.parse(MinCount);
+        }
+        return 0
+    })
+    const [count, setCount] = useState(minCount)
 
     useEffect(() => {
         localStorage.setItem('minCount', JSON.stringify(minCount))
@@ -33,27 +28,21 @@ function App() {
         localStorage.setItem('maxCount', JSON.stringify(maxCount))
     }, [maxCount])
 
+    const changeCount = (number: number) =>{
+        setCount(number)
+    }
+    const changeMaxCount = (number: number) =>{
+        setMaxCount(number)
+    }
+    const changeMinCount = (number: number) =>{
+        setMinCount(number)
+    }
+
 
     return (
-        <div className={"App"}>
-            <Setting
-                minCount={minCount}
-                maxCount={maxCount}
-                setMaxCount={setMaxCount}
-                setMinCount={setMinCount}
-                setCount={setCount}
-                setErrorMessage={setErrorMessage}
-                setError={setError}
-            />
-            <Counter
-                count={count}
-                maxCount={maxCount}
-                minCount={minCount}
-                setCount={setCount}
-                error={error}
-                setError={setError}
-                errorMessage={errorMessage}
-            />
+        <div className="App">
+            <Settings maxCount={maxCount} changeMaxCount={changeMaxCount} minCount={minCount} changeMinCount={changeMinCount} changeCount={changeCount}/>
+            <Counter count={count} changeCount={changeCount} maxCount={maxCount} minCount={minCount}/>
         </div>
     );
 }
