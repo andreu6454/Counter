@@ -2,7 +2,7 @@
   "name": "untitled",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://andreu6454.github.io/counter",
+  "homepage": "https://andreu6454.github.io/Counter",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.3.0",
