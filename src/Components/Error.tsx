@@ -7,7 +7,7 @@ type ErrorPropsType = {
 const Error = (props: ErrorPropsType) => {
     return (
         <div className={"ErrorMessage"}>
-            {props.error && props.errorMessage}
+            {props.error? props.errorMessage : <br/>}
         </div>
     );
 };
