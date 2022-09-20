@@ -26,6 +26,7 @@ function App() {
         if (minCount < maxCount) {
             localStorage.setItem('minCount', JSON.stringify(minCount))
             setIsDisabled(false)
+            setError(false)
         } else {
             setError(true)
             setIsDisabled(true)
@@ -37,6 +38,7 @@ function App() {
         if (minCount < maxCount) {
             localStorage.setItem('maxCount', JSON.stringify(maxCount))
             setIsDisabled(false)
+            setError(false)
         } else {
             setError(true)
             setIsDisabled(true)
