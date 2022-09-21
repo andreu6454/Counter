@@ -65,8 +65,14 @@ function App() {
 
     return (
         <div className="App">
-            <Settings maxCount={maxCount} changeMaxCount={changeMaxCount} minCount={minCount}
-                      changeMinCount={changeMinCount} changeCount={changeCount} error={error} isDisabled={isDisabled} setNullMessage={setNullMessage}
+            <Settings maxCount={maxCount}
+                      changeMaxCount={changeMaxCount}
+                      minCount={minCount}
+                      changeMinCount={changeMinCount}
+                      changeCount={changeCount}
+                      error={error}
+                      isDisabled={isDisabled}
+                      setNullMessage={setNullMessage}
             />
             <Counter count={count} changeCount={changeCount} maxCount={maxCount} minCount={minCount} message={message}/>
         </div>
