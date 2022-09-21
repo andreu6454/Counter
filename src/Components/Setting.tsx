@@ -10,7 +10,8 @@ type SettingsPropsType = {
     changeMinCount: (number: number) => void,
     changeCount: (number: number) => void,
     error: boolean,
-    isDisabled: boolean
+    isDisabled: boolean,
+    setNullMessage: () => void
 }
 const Setting = (props: SettingsPropsType) => {
 
@@ -18,6 +19,7 @@ const Setting = (props: SettingsPropsType) => {
         props.changeMaxCount(props.maxCount)
         props.changeMinCount(props.minCount)
         props.changeCount(props.minCount)
+        props.setNullMessage()
     }
 
     return (

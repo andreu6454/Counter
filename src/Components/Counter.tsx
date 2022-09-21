@@ -7,7 +7,8 @@ type CounterPropsType ={
     count: number,
     changeCount: (number: number)=> void,
     maxCount: number,
-    minCount: number
+    minCount: number,
+    message: string | null
 }
 const Counter = (props:CounterPropsType) => {
 
@@ -22,6 +23,7 @@ const Counter = (props:CounterPropsType) => {
             setError(true)
             setColor("Red")
             setIncIsDisabled(true)
+            setResetIsDisabled(false)
         } else{
             props.changeCount(props.count + 1)
             setResetIsDisabled(false)
@@ -37,13 +39,12 @@ const Counter = (props:CounterPropsType) => {
 
     return (
         <div className={"Counter"}>
-            <Display color={color} count={props.count}/>
+            <Display color={color} count={props.count} message={props.message}/>
             <Error error={error} errorMessage={"Max Value"}/>
             <div className={"Buttons"}>
                 <Button name={"Inc"} isDisabled={incIsDisabled} callBack={IncHandler}/>
                 <Button name={"Reset"} isDisabled={resetIsDisabled} callBack={ResetHandler}/>
             </div>
-
         </div>
     );
 };
