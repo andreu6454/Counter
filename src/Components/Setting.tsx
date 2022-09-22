@@ -20,6 +20,8 @@ const Setting = (props: SettingsPropsType) => {
         props.changeMinCount(props.minCount)
         props.changeCount(props.minCount)
         props.setNullMessage()
+        localStorage.setItem('maxCount', JSON.stringify(props.maxCount))
+        localStorage.setItem('minCount', JSON.stringify(props.minCount))
     }
 
     return (

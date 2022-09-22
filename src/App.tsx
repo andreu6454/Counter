@@ -74,7 +74,12 @@ function App() {
                       isDisabled={isDisabled}
                       setNullMessage={setNullMessage}
             />
-            <Counter count={count} changeCount={changeCount} maxCount={maxCount} minCount={minCount} message={message}/>
+            <Counter count={count}
+                     changeCount={changeCount}
+                     maxCount={maxCount}
+                     minCount={minCount}
+                     message={message}
+            />
         </div>
     );
 }
