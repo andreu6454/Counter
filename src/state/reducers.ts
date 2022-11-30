@@ -61,22 +61,38 @@ export const counterReducer = (state:CounterStateType = initialState ,action: Ro
         }
         case "SETMIN":{
             if(action.minCount >= state.maxCount){
-                return {...state, error: true, color: "Red", setIsDisabled: true, message: "Error"}
+                return {...state,
+                    error: true,
+                    color: "Red",
+                    setIsDisabled: true,
+                    message: "Error",
+                    incIsDisabled: true,
+                    resetIsDisabled: true}
             }
             return {...state,
                 minCount: action.minCount,
                 setIsDisabled: false,
+                incIsDisabled: true,
+                resetIsDisabled: true,
                 message: "Press Set",
                 color: "White",
                 error: false,}
         }
         case "SETMAX":{
             if(state.minCount >= action.maxCount){
-                return {...state, error: true, color: "Red", setIsDisabled: true, message: "Error"}
+                return {...state,
+                    error: true,
+                    color: "Red",
+                    setIsDisabled: true,
+                    message: "Error",
+                    incIsDisabled: true,
+                    resetIsDisabled: true}
             }
             return {...state,
                 maxCount: action.maxCount,
                 setIsDisabled: false,
+                incIsDisabled: true,
+                resetIsDisabled: true,
                 message: "Press Set",
                 color: "White",
                 error: false,}
