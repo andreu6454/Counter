@@ -72,6 +72,16 @@ export const counterReducer = (state:CounterStateType = initialState ,action: Ro
                     incIsDisabled: true,
                     resetIsDisabled: true}
             }
+            if(action.minCount > 9999999){
+                return {...state,
+                    minCount: action.minCount,
+                    settingError: true,
+                    color: "Red",
+                    setIsDisabled: true,
+                    message: "Too big",
+                    incIsDisabled: true,
+                    resetIsDisabled: true}
+            }
             return {...state,
                 minCount: action.minCount,
                 setIsDisabled: false,
@@ -92,6 +102,16 @@ export const counterReducer = (state:CounterStateType = initialState ,action: Ro
                     incIsDisabled: true,
                     resetIsDisabled: true}
             }
+            if(action.maxCount > 9999999){
+                return {...state,
+                    minCount: action.maxCount,
+                    settingError: true,
+                    color: "Red",
+                    setIsDisabled: true,
+                    message: "Too big",
+                    incIsDisabled: true,
+                    resetIsDisabled: true}
+            }
             return {...state,
                 maxCount: action.maxCount,
                 setIsDisabled: false,
@@ -107,7 +127,8 @@ export const counterReducer = (state:CounterStateType = initialState ,action: Ro
                 count: state.minCount,
                 message: state.minCount.toString(),
                 incIsDisabled: false,
-                settingError: false,}
+                settingError: false,
+                counterError: false}
         }
         default: return state
     }
