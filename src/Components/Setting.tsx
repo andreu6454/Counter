@@ -27,7 +27,7 @@ const Setting = () => {
                 <Input title={"Max Value:"} value={counter.maxCount} onChange={changeMaxCount}/>
                 <Input title={"Min Value:"} value={counter.minCount} onChange={changeMinCount}/>
             </div>
-            <Error error={counter.error} errorMessage={"Max <= Min"}/>
+            <Error error={counter.settingError} errorMessage={"Max <= Min"}/>
             <div className={"Buttons"}>
                 <div className={"SetButton"}>
                     <Button name={"Set"} callBack={changeHandler} isDisabled={counter.setIsDisabled}/>

@@ -21,7 +21,7 @@ const Counter = () => {
     return (
         <div className={"Counter"}>
             <Display color={counter.color} count={counter.count} message={counter.message}/>
-            <Error error={counter.error} errorMessage={"Max Value"}/>
+            <Error error={counter.counterError} errorMessage={"Max Value"}/>
             <div className={"Buttons"}>
                 <Button name={"Inc"} isDisabled={counter.incIsDisabled} callBack={IncHandler}/>
                 <Button name={"Reset"} isDisabled={counter.resetIsDisabled} callBack={ResetHandler}/>
