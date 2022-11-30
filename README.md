@@ -1,5 +1,6 @@
 # Counter
-### Using:
--TypeScript
--React
--Redux
+###  Using:
+- TypeScript
+- React
+- Redux
+- LocalStorage

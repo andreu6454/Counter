@@ -36,21 +36,55 @@ export const counterReducer = (state:CounterStateType = initialState ,action: Ro
     switch (action.type){
         case "INCREMENT":{
             if(state.count >= state.maxCount - 1){
-                return {...state,count: action.count + 1,resetIsDisabled: false, error: true, incIsDisabled: true, color: "Red", message: (state.count+1).toString()}
+                return {...state,
+                    count: action.count + 1,
+                    resetIsDisabled: false,
+                    error: true,
+                    incIsDisabled: true,
+                    color: "Red",
+                    message: (state.count+1).toString()}
             }
-            return {...state, count: action.count + 1, resetIsDisabled: false}
+            return {...state,
+                count: action.count + 1,
+                resetIsDisabled: false,
+                message: (state.count + 1).toString(),
+                color: "White"}
         }
         case "RESET":{
-            return {...state, count: state.minCount, resetIsDisabled: true, incIsDisabled: false,error: false, color: "White", message: ""}
+            return {...state,
+                count: state.minCount,
+                resetIsDisabled: true,
+                incIsDisabled: false,
+                error: false,
+                color: "Black",
+                message: ""}
         }
         case "SETMIN":{
-            return {...state,minCount: action.minCount, setIsDisabled: false, message: "Press Set"}
+            if(action.minCount >= state.maxCount){
+                return {...state, error: true, color: "Red", setIsDisabled: true, message: "Error"}
+            }
+            return {...state,
+                minCount: action.minCount,
+                setIsDisabled: false,
+                message: "Press Set",
+                color: "White"}
         }
         case "SETMAX":{
-            return {...state,maxCount: action.maxCount, setIsDisabled: false, message: "Press Set"}
+            if(state.minCount >= action.maxCount){
+                return {...state, error: true, color: "Red", setIsDisabled: true, message: "Error"}
+            }
+            return {...state,
+                maxCount: action.maxCount,
+                setIsDisabled: false,
+                message: "Press Set",
+                color: "White"}
         }
         case "SET":{
-            return {...state, setIsDisabled: true, }
+            return {...state,
+                setIsDisabled: true,
+                count: state.minCount,
+                message: state.minCount.toString(),
+                incIsDisabled: false}
         }
         default: return state
     }

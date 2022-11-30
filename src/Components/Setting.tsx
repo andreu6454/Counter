@@ -2,38 +2,35 @@ import React from 'react';
 import Button from "./Button";
 import Input from "./Input";
 import Error from "./Error";
+import {useDispatch, useSelector} from "react-redux";
+import {AppRootStateType} from "../state/store";
+import {CounterStateType, setAC, setMaxCountAC, setMinCountAC} from "../state/reducers";
 
-type SettingsPropsType = {
-    maxCount: number,
-    changeMaxCount: (number: number) => void,
-    minCount: number,
-    changeMinCount: (number: number) => void,
-    changeCount: (number: number) => void,
-    error: boolean,
-    isDisabled: boolean,
-    setNullMessage: () => void
-}
-const Setting = (props: SettingsPropsType) => {
+const Setting = () => {
 
+    const counter = useSelector<AppRootStateType,CounterStateType>((count)=> count.counter)
+    const dispatch = useDispatch()
+
+    const changeMaxCount = (maxCount: number ) =>{
+        dispatch(setMaxCountAC(maxCount))
+    }
+    const changeMinCount = (e: number) =>{
+        dispatch(setMinCountAC(e))
+    }
     const changeHandler = () => {
-        props.changeMaxCount(props.maxCount)
-        props.changeMinCount(props.minCount)
-        props.changeCount(props.minCount)
-        props.setNullMessage()
-        localStorage.setItem('maxCount', JSON.stringify(props.maxCount))
-        localStorage.setItem('minCount', JSON.stringify(props.minCount))
+        dispatch(setAC())
     }
 
     return (
         <div className={"Setting"}>
             <div className={"SettingDisplay"}>
-                <Input title={"Max Value:"} value={props.maxCount} onChange={props.changeMaxCount}/>
-                <Input title={"Min Value:"} value={props.minCount} onChange={props.changeMinCount}/>
+                <Input title={"Max Value:"} value={counter.maxCount} onChange={changeMaxCount}/>
+                <Input title={"Min Value:"} value={counter.minCount} onChange={changeMinCount}/>
             </div>
-            <Error error={props.error} errorMessage={"Max <= Min"}/>
+            <Error error={counter.error} errorMessage={"Max <= Min"}/>
             <div className={"Buttons"}>
                 <div className={"SetButton"}>
-                    <Button name={"Set"} callBack={changeHandler} isDisabled={props.isDisabled}/>
+                    <Button name={"Set"} callBack={changeHandler} isDisabled={counter.setIsDisabled}/>
                 </div>
             </div>
         </div>
