@@ -1,49 +1,30 @@
-import React, {useState} from 'react';
+import React from 'react';
 import Display from "./Display";
 import Button from "./Button";
 import Error from './Error'
+import {useDispatch, useSelector} from "react-redux";
+import {AppRootStateType} from "../state/store";
+import {CounterStateType, incrementAC, resetAc} from "../state/reducers";
 
-type CounterPropsType ={
-    count: number,
-    changeCount: (number: number)=> void,
-    maxCount: number,
-    minCount: number,
-    message: string | null
-}
-const Counter = (props:CounterPropsType) => {
 
-    const [incIsDisabled,setIncIsDisabled] = useState(false)
-    const [resetIsDisabled,setResetIsDisabled] = useState(true)
-    const [color,setColor] = useState("White")
-    const [error,setError] = useState(false)
+const Counter = () => {
+    const counter = useSelector<AppRootStateType,CounterStateType>((count)=> count.counter)
+    const dispatch = useDispatch()
 
     const IncHandler = () =>{
-        if (props.count === props.maxCount - 1){
-            props.changeCount(props.count + 1)
-            setError(true)
-            setColor("Red")
-            setIncIsDisabled(true)
-            setResetIsDisabled(false)
-        } else{
-            props.changeCount(props.count + 1)
-            setResetIsDisabled(false)
-        }
+        dispatch(incrementAC(counter.count))
     }
     const ResetHandler = () =>{
-        props.changeCount(props.minCount)
-        setError(false)
-        setColor("White")
-        setIncIsDisabled(false)
-        setResetIsDisabled(true)
+        dispatch(resetAc())
     }
 
     return (
         <div className={"Counter"}>
-            <Display color={color} count={props.count} message={props.message}/>
-            <Error error={error} errorMessage={"Max Value"}/>
+            <Display color={counter.color} count={counter.count} message={counter.message}/>
+            <Error error={counter.error} errorMessage={"Max Value"}/>
             <div className={"Buttons"}>
-                <Button name={"Inc"} isDisabled={incIsDisabled} callBack={IncHandler}/>
-                <Button name={"Reset"} isDisabled={resetIsDisabled} callBack={ResetHandler}/>
+                <Button name={"Inc"} isDisabled={counter.incIsDisabled} callBack={IncHandler}/>
+                <Button name={"Reset"} isDisabled={counter.resetIsDisabled} callBack={ResetHandler}/>
             </div>
         </div>
     );
