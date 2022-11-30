@@ -67,7 +67,8 @@ export const counterReducer = (state:CounterStateType = initialState ,action: Ro
                 minCount: action.minCount,
                 setIsDisabled: false,
                 message: "Press Set",
-                color: "White"}
+                color: "White",
+                error: false,}
         }
         case "SETMAX":{
             if(state.minCount >= action.maxCount){
@@ -77,14 +78,16 @@ export const counterReducer = (state:CounterStateType = initialState ,action: Ro
                 maxCount: action.maxCount,
                 setIsDisabled: false,
                 message: "Press Set",
-                color: "White"}
+                color: "White",
+                error: false,}
         }
         case "SET":{
             return {...state,
                 setIsDisabled: true,
                 count: state.minCount,
                 message: state.minCount.toString(),
-                incIsDisabled: false}
+                incIsDisabled: false,
+                error: false,}
         }
         default: return state
     }
