@@ -84,7 +84,7 @@ export const counterReducer = (state: CounterStateType = initialState, action: R
             if (action.maxCount > 9999999) {
                 return {
                     ...state,
-                    minCount: action.maxCount,
+                    maxCount: action.maxCount,
                     setIsDisabled: true,
                     message: "Too big",
                 }
