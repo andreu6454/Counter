@@ -16,12 +16,12 @@ test('increment should increment count by 1', () => {
 
     expect(endState.count).toEqual(1)
 })
-test('reset should set count to 0', () => {
+test('reset should set count to minCount', () => {
     const startState = {...initialState, count: 5}
 
     const action = resetAc()
 
     const endState = counterReducer(startState, action)
 
-    expect(endState.count).toEqual(0)
+    expect(endState.count).toEqual(endState.minCount)
 })

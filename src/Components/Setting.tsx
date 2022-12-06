@@ -4,7 +4,7 @@ import Input from "./Input";
 import Error from "./Error";
 import {useDispatch, useSelector} from "react-redux";
 import {AppRootStateType, ThunkAppDispatchType} from "../state/store";
-import {CounterStateType, setAC, setMaxCountTC, setMinCountTC} from "../state/reducers";
+import {CounterStateType, setAC, setMaxCountAC, setMinCountAC} from "../state/reducers";
 
 const Setting = () => {
 
@@ -12,10 +12,10 @@ const Setting = () => {
     const dispatch = useDispatch<ThunkAppDispatchType>()
 
     const changeMaxCount = (maxCount: number ) =>{
-        dispatch(setMaxCountTC(maxCount))
+        dispatch(setMaxCountAC(maxCount))
     }
     const changeMinCount = (e: number) =>{
-        dispatch(setMinCountTC(e))
+        dispatch(setMinCountAC(e))
     }
     const changeHandler = () => {
         dispatch(setAC())

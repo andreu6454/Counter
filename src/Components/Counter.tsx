@@ -4,7 +4,7 @@ import Button from "./Button";
 import Error from './Error'
 import {useDispatch, useSelector} from "react-redux";
 import {AppRootStateType, ThunkAppDispatchType} from "../state/store";
-import {CounterStateType, incrementTC, resetTC} from "../state/reducers";
+import {CounterStateType, incrementAC, resetAc} from "../state/reducers";
 
 
 const Counter = () => {
@@ -12,15 +12,15 @@ const Counter = () => {
     const dispatch = useDispatch<ThunkAppDispatchType>()
 
     const IncHandler = () => {
-        dispatch(incrementTC(counter.count))
+        dispatch(incrementAC())
     }
     const ResetHandler = () => {
-        dispatch(resetTC())
+        dispatch(resetAc())
     }
 
     return (
         <div className={"Counter"}>
-            <Display color={counter.color} count={counter.count} message={counter.message}/>
+            <Display color={((counter.count >= counter.maxCount)||(counter.minCount >= counter.maxCount))? 'Red': "White" } count={counter.count} message={counter.message}/>
             <Error error={counter.count >= counter.maxCount} errorMessage={"Max Value"}/>
             <div className={"Buttons"}>
                 <Button name={"Inc"}
