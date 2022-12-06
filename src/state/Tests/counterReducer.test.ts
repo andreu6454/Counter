@@ -4,13 +4,12 @@ const initialState: CounterStateType = {
     count: 0,
     minCount: 0,
     maxCount: 0,
-    setIsDisabled:true,
+    setIsDisabled: true,
     color: "white",
     message: ""
 }
 
 test('increment should increment count by 1', () => {
-
 
     const action = incrementAC()
 
@@ -25,5 +24,5 @@ test('reset should set count to 0', () => {
 
     const endState = counterReducer(startState, action)
 
-    expect(endState.count ).toEqual(0)
+    expect(endState.count).toEqual(0)
 })
