@@ -5,7 +5,6 @@ const initialState: CounterStateType = {
     minCount: 0,
     maxCount: 0,
     setIsDisabled: true,
-    color: "white",
     message: ""
 }
 
