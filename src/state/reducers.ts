@@ -28,13 +28,6 @@ const initialState: CounterStateType = {
 export const counterReducer = (state: CounterStateType = initialState, action: RootActionType): CounterStateType => {
     switch (action.type) {
         case "INCREMENT": {
-            if (state.count >= state.maxCount - 1) {
-                return {
-                    ...state,
-                    count: state.count + 1,
-                    message: ""
-                }
-            }
             return {
                 ...state,
                 count: state.count + 1,
