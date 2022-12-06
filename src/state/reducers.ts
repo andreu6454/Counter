@@ -64,6 +64,13 @@ export const counterReducer = (state: CounterStateType = initialState, action: R
                     setIsDisabled: true,
                     message: "Too big",
                 }
+            } else if(action.minCount < -999999){
+                return {
+                    ...state,
+                    minCount: action.minCount,
+                    setIsDisabled: true,
+                    message: "Too small",
+                }
             }
             return {
                 ...state,
@@ -87,6 +94,13 @@ export const counterReducer = (state: CounterStateType = initialState, action: R
                     maxCount: action.maxCount,
                     setIsDisabled: true,
                     message: "Too big",
+                }
+            } else if(action.maxCount < -999998){
+                return {
+                    ...state,
+                    minCount: action.maxCount,
+                    setIsDisabled: true,
+                    message: "Too small",
                 }
             }
             return {
