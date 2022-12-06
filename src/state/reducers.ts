@@ -32,13 +32,13 @@ export const counterReducer = (state: CounterStateType = initialState, action: R
                 return {
                     ...state,
                     count: state.count + 1,
-                    message: (state.count + 1).toString()
+                    message: ""
                 }
             }
             return {
                 ...state,
                 count: state.count + 1,
-                message: (state.count + 1).toString(),
+                message: "",
             }
         }
         case "RESET": {
